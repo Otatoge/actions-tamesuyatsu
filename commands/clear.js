@@ -23,5 +23,6 @@ module.exports = async (github, context, cmd, args) => {
       repo: context.repo.repo,
       comment_id: comment.id,
     });
+    await setTimeout(100);
   }
 }
