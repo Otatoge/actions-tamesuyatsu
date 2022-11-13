@@ -17,7 +17,7 @@ module.exports = async (github, context, cmd, args) => {
     owner: context.repo.owner,
     repo: context.repo.repo
   });
-  for (const comment of comments.slice(-1 * Number(args[1]))) {
+  for (const comment of comments.data.slice(-1 * Number(args[1]))) {
     await github.rest.issues.deleteComment({
       owner: context.repo.owner,
       repo: context.repo.repo,
