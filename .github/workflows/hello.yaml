@@ -1,0 +1,22 @@
+name: comment hello
+
+on:
+  issue_comment:
+    created
+
+jobs:
+  hello:
+    if: ${{ github.event.comment.body == "hello" }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Hello!'
+            })
