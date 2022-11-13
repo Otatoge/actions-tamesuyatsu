@@ -1,8 +1,7 @@
 name: comment hello
 
 on:
-  issue_comment:
-    created
+  issue_comment: [created]
 
 jobs:
   hello:
