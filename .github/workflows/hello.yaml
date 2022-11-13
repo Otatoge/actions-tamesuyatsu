@@ -1,14 +1,13 @@
 name: comment hello
 
-on:
-  issue_comment: [created]
+on: issue_comment
 
 jobs:
   hello:
-    if: ${{ github.event.comment.body == "hello" }}
     runs-on: ubuntu-latest
     steps:
       - name: Say hello
+        if: ${{ github.event.comment.body == "hello" }}
         uses: actions/github-script@v6
         with:
           github-token: ${{ github.token }}
