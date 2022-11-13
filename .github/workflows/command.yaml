@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: setup.sh
+      - run: ./setup.sh
       - uses: actions/github-script@v6
         with:
           github-token: ${{ github.token }}
