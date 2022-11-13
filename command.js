@@ -1,4 +1,4 @@
-const { readdir, readFile } = require("node:fs/promises");
+const { readdir } = require("node:fs/promises");
 module.exports = async (github, context) => {
   const args = context.payload.comment.body.split(" ");
   const cmd = args[0]
@@ -6,7 +6,7 @@ module.exports = async (github, context) => {
     let ran = false
     for (const file of await readdir("./commands/", { withFileTypes: true })) {
       if (file.isFile()) {
-        require(readFile(`./commands/${file.name}`))(github, context, cmd, args);
+        require(`./commands/${file.name}`)(github, context, cmd, args);
         ran = true
         break
       }
