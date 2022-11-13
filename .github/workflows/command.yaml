@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        uses: actions/github-script@v6
+      - run: setup.sh
+      - uses: actions/github-script@v6
         with:
           github-token: ${{ github.token }}
           script: require("./command")(github, context)
