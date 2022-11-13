@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say hello
-        if: ${{ github.event.comment.body == "hello" }}
+        if: ${{ github.event.comment.body }} == "hello"
         uses: actions/github-script@v6
         with:
           github-token: ${{ github.token }}
