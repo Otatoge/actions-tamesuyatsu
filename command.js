@@ -5,8 +5,8 @@ module.exports = async (github, context) => {
   if (cmd.startsWith(";")) {
     let ran = false
     for (const file of await readdir("./commands/", { withFileTypes: true })) {
-      if (file.isFile() && `;${file.name}` === cmd) {
-        require(`./commands/${file.name}`)(github, context, cmd, args);
+      if (file.isFile() && `;${file.name}` === `${cmd}.js`) {
+        require(`./commands/${file.name.replace(new RegExp('\\.js$'), '')}`)(github, context, cmd, args);
         ran = true
         break
       }
