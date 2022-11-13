@@ -1,6 +1,6 @@
 const { readdir } = require("node:fs/promises");
 module.exports = async (github, context) => {
-  const args = context.issue.comment.body.split(" ");
+  const args = context.payload.comment.body.split(" ");
   const cmd = args[0]
   if (cmd.startsWith(";")) {
     let ran = false
